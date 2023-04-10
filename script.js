@@ -1,6 +1,6 @@
 
 let input = prompt('What would like to do?');
-const todos = [''];
+const todos = [];
 
 while (input !== 'quit' && input !== 'q') {
     if (input === 'list') {
@@ -14,7 +14,15 @@ while (input !== 'quit' && input !== 'q') {
         todos.push(newTodo);
         console.log(`${newTodo} has been added!`);
     } else if (input === 'delete') {
-        const index = prompt('Ayt. Enter an index to delete');
+        const index = parseInt(prompt('Ayt. Enter an index to delete'));
+        if (!Number.isNaN(index)) {
+            const deleted = todos.splice(index,1);
+            console.log(`OK, deleted ${deleted[0]}`);
+        } else {
+            console.log('Not a valid index');
+        }
     }
     input = prompt('What would like to do?');
-}
+};
+
+console.log('Ayt, you exited the app.')
